@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Social Brew | Connection Made Easy</title>
+<style>
+  :root {
+    --primary-color: #6f4e37;
+    --secondary-color: #c9b89e;
+    --accent-color: #d2994a;
+    --text-color: #333;
+    --background-color: #faf9f7;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  header {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 3rem 1.5rem 4rem 1.5rem;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  header img {
+    max-width: 150px;
+    margin: 0 auto 1rem;
+  }
+  header h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+  }
+  header p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 500;
+  }
+  main {
+    max-width: 1100px;
+    margin: 3rem auto 4rem;
+    padding: 0 1.5rem;
+  }
+  section {
+    margin-bottom: 4rem;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-align: center;
+  }
+  .features-grid,
+  .benefits-list,
+  .testimonials-list,
+  .pricing-cards {
+    display: grid;
+    gap: 1.75rem;
+  }
+  .features-grid {
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  }
+  .features-item, .benefits-item, .testimonial-item, .pricing-card {
+    background: white;
+    padding: 1.75rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgb(111 78 55 / 0.12);
+    display: flex;
+    flex-direction: column;
+  }
+  .features-item strong, .benefits-item strong {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+  }
+  .benefits-list {
+    grid-template-columns: repeat(auto-fit,minmax(220px, 1fr));
+    list-style: none;
+    padding: 0;
+  }
+  .benefits-item {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    justify-content: center;
+    text-align: center;
+  }
+  .testimonials-list {
+    grid-template-columns: 1fr;
+  }
+  .testimonial-item {
+    font-style: italic;
+    color: #5a4532;
+    text-align: center;
+    font-size: 1.15rem;
+    position: relative;
+    padding-top: 1.5rem;
+  }
+  .testimonial-item::before {
+    content: "“";
+    font-size: 3rem;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent-color);
+  }
+  .pricing-cards {
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  }
+  .pricing-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+  .pricing-card p {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: #4a3b27;
+  }
+  .pricing-card .price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+  }
+  .btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.85rem 2.3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #b17f2d;
+    outline: none;
+  }
+  form {
+    max-width: 480px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgb(111 78 55 / 0.12);
+  }
+  form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--primary-color);
+  }
+  form input, form textarea {
+    width: 100%;
+    border: 2px solid #d7cdc3;
+    border-radius: 8px;
+    padding: 0.65rem 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  form input:focus,
+  form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+  }
+  form textarea {
+    min-height: 100px;
+  }
+  @media (min-width: 768px) {
+    header h1 {
+      font-size: 3.75rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="logo.png" alt="Your Brand" />
+  <h1>Connection doesn’t have to be hard.<br>Most people aren’t bad at socializing—<br>they just don’t have the right setup.</h1>
+  <p>Social Brew is a simple way to make hanging out feel more natural. Drinks, plus a little help getting the conversation going.</p>
+</header>
+<main>
+  <section id="features" aria-label="What This Is and How It Works">
+    <h2>What This Is</h2>
+    <div class="features-grid">
+      <article class="features-item">
+        <strong>Social Brew</strong>
+        <p>A simple way to make hanging out feel more natural. Drinks, plus a little help getting the conversation going.</p>
+      </article>
+      <article class="features-item">
+        <strong>How It Works</strong>
+        <p>You meet up like you normally would.<br><em>“Want to grab something?”</em><br>Only now, there’s less pressure to figure out what to say next. A few thoughtful prompts if you want them. Or just a better flow if you don’t.</p>
+      </article>
+    </div>
+  </section>
+  <section id="benefits" aria-label="For Moments Like and What’s Inside">
+    <h2>For Moments Like</h2>
+    <ul class="benefits-list">
+      <li class="benefits-item">First hangouts that could go either way</li>
+      <li class="benefits-item">Catching up without small talk</li>
+      <li class="benefits-item">Getting to know someone new</li>
+      <li class="benefits-item">Saying yes a little more often</li>
+    </ul>
+    <h2>What’s Inside</h2>
+    <ul class="benefits-list" style="margin-top:1.5rem;">
+      <li class="benefits-item">Light, easy-to-drink coffee</li>
+      <li class="benefits-item">No-pressure alternatives like tea and cacao</li>
+      <li class="benefits-item">Conversation Catalyst Cards (use one, a few, or none)</li>
+    </ul>
+  </section>
+  <section id="testimonials" aria-label="Why It Feels Different">
+    <h2>Why It Feels Different</h2>
+    <div class="testimonials-list">
+      <blockquote class="testimonial-item">
+        It doesn’t try to change you. It just makes the interaction easier.<br><br><strong>Try it next time you were going to “grab coffee” anyway.</strong>
+      </blockquote>
+    </div>
+  </section>
+  <section id="pricing" aria-label="Pricing">
+    <h2>Pricing</h2>
+    <div class="pricing-cards">
+      <article class="pricing-card" aria-label="Basic Plan">
+        <h3>Basic Pack</h3>
+        <p>Includes light, easy-to-drink coffee and conversation catalyst cards to get you started.</p>
+        <p class="price">$15</p>
+        <button class="btn-primary" type="button" aria-label="Purchase Basic Pack">Buy Now</button>
+      </article>
+      <article class="pricing-card" aria-label="Tea & Cacao Pack">
+        <h3>Tea & Cacao Pack</h3>
+        <p>Enjoy no-pressure alternatives like tea and cacao with all conversation catalyst cards included.</p>
+        <p class="price">$18</p>
+        <button class="btn-primary" type="button" aria-label="Purchase Tea & Cacao Pack">Buy Now</button>
+      </article>
+      <article class="pricing-card" aria-label="Ultimate Social Brew Pack">
+        <h3>Ultimate Pack</h3>
+        <p>All drinks + catalyst cards plus exclusive tips for making perfect moments every time.</p>
+        <p class="price">$25</p>
+        <button class="btn-primary" type="button" aria-label="Purchase Ultimate Pack">Buy Now</button>
+      </article>
+    </div>
+  </section>
+  <section id="contact" aria-label="Contact Form">
+    <h2>Contact Us</h2>
+    <form id="leadform" method="post" action="#" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name" />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com" />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Any questions or feedback?"></textarea>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>
